@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+import Navbar from './Components/Navbar.js'
+import { TextArea } from './Components/TextArea.js';
 import './App.css';
+import { useState } from 'react';
+// import { AccordionDarkMode } from './Components/AccordionDarkMode.js';
+// import { Form } from './Components/Form.js';
+
+
+// Main Starting Point of the App
+
+
 
 function App() {
+
+  // Setting Dark Mode for Website, using toggle button
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+      document.body.style.background="#393646";
+    }
+    else {
+      setTheme('light')
+      document.body.style.background="white";
+      
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      <div className="container">
+        <TextArea heading="Enter Text Below to Analyze" theme={theme} />
+      </div>
+      {/* <AccordionDarkMode/> */}
+      <br />
+      {/* <Form/> */}
+    </>
   );
 }
 
