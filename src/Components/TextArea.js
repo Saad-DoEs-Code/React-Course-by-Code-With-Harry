@@ -32,7 +32,7 @@ export const TextArea = (props) => {
 
     return (
         <>
-            <div className="mb-3 my-5">
+            <div className={`mb-3 my-5 text-${props.theme ==='light' ? 'dark' : 'light'}`}>
                 <h1>{props.heading}</h1>
                 <textarea className="form-control" value={text} onChange={textOnChange} id="textBox" rows="8"></textarea>
             </div>
@@ -40,7 +40,8 @@ export const TextArea = (props) => {
             <button className="btn btn-primary mx-1" onClick={textUpperCase}>Upper Case</button>
             <button className="btn btn-primary mx-1" onClick={textLowerCase}>Lower Case</button>
 
-            <div className='container  my-3'>
+            <div className={`container  my-3 text-${props.theme ==='light' ? 'dark' : 'light'}`} >
+            {/* style={`${props.theme==='light'? {color:'black'}:{color:'white'}}`} */}
                 <h1>Text Summary</h1>
                 <p>Total Characters: {text.length} </p>
                 <p>Total Words: {text.split(" ").length} </p>
